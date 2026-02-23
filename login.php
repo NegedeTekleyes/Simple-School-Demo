@@ -103,15 +103,41 @@
             <li><a href="">Login</a></li>
         </ul>
     </header>
-    <div class="login_body">
-        <fieldset>
-            <h1>Login Form</h1>
-            User Name: <input type="text" name="user">
-            Password : <input type="password" name="password"> <br><br><br>
-            <input type="submit" name="Login">
-        </fieldset>
+    <form method="POST" action="">
+        <div class="login_body">
+            <fieldset>
+                <h1>Login Form</h1>
+                User Name: <input type="text" name="user">
+                Password : <input type="password" name="password"> <br><br><br>
+                <input type="submit" name="login">
+            </fieldset>
 
-    </div>
+        </div>
+        <?php
+        include("conn.php");
+        if (isset($_POST['login'])) {
+            $username = $_POST['user'];
+            $password = $_POST['password'];
+
+            $res = mysqli_query($conn,  "SELECT * from login where email= '$username' and password = '$password'");
+
+            if ($res) {
+                if (mysqli_num_rows($res) > 0) {
+                    while ($rows = mysqli_fetch_array($res)) {
+                        $user = $row['email'];
+                        $user = $row['password'];
+                    }
+                    if ($username == $user && $password == $user) {
+                        header('location: home.html');
+                    }
+                }
+            } else {
+            }
+        }
+
+        ?>
+
+    </form>
 </body>
 
 </html>
