@@ -118,24 +118,21 @@
         if (isset($_POST['login'])) {
             $username = $_POST['user'];
             $password = $_POST['password'];
-
             $res = mysqli_query($conn,  "SELECT * from login where email= '$username' and password = '$password'");
-
-            if ($res) {
-                if (mysqli_num_rows($res) > 0) {
-                    while ($rows = mysqli_fetch_array($res)) {
-                        $user = $row['email'];
-                        $user = $row['password'];
-                    }
-                    if ($username == $user && $password == $user) {
-                        header('location: home.html');
-                    }
-                }
+            if (mysqli_num_rows($res) > 0) {
+                header('location:home.html');
             } else {
+                echo "Invalid username or pasword";
             }
         }
 
+
+
+
         ?>
+
+
+
 
     </form>
 </body>
