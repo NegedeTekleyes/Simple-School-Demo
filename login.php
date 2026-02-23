@@ -72,6 +72,14 @@
         border-radius: 10px;
 
     }
+
+    .login_body {
+        background-color: brown;
+        padding: 50px 70px;
+        margin-left: 360px;
+        width: 60%;
+        text-align: center;
+    }
 </style>
 
 <body>
@@ -95,9 +103,15 @@
             <li><a href="">Login</a></li>
         </ul>
     </header>
-    <fieldset>
-        <h1>Login Form</h1>
-    </fieldset>
+    <div class="login_body">
+        <fieldset>
+            <h1>Login Form</h1>
+            User Name: <input type="text" name="user">
+            Password : <input type="password" name="password"> <br><br><br>
+            <input type="submit" name="Login">
+        </fieldset>
+
+    </div>
 </body>
 
 </html>
